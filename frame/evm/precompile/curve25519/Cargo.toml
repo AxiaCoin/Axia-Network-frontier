@@ -1,0 +1,31 @@
+[package]
+name = "pallet-evm-precompile-curve25519"
+version = "1.0.0-dev"
+authors = ["AXIA Technologies <admin@axiacoin.network>", "Drew Stone <drew@webb.tools>"]
+edition = "2018"
+license = "Apache-2.0"
+homepage = "https://axlib.io"
+repository = "https://github.com/axia-tech/frontier/"
+description = "Curve25519 elliptic curve precompiles for EVM pallet."
+
+[dependencies]
+sp-core = { version = "4.0.0-dev", default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-io = { version = "4.0.0-dev", default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+frame-support = { version = "4.0.0-dev", default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+fp-evm = { version = "3.0.0-dev", default-features = false, path = "../../../../primitives/evm" }
+codec = { git = "https://github.com/axia-tech/axia-scale-codec", branch = "v2.3.1", package = "axia-scale-codec", version = "2.3.1", default-features = false }
+
+[dependencies.curve25519-dalek]
+version = "4.0.0-dev"
+default-features = false
+features = ["u64_backend", "alloc"]
+
+[features]
+default = ["std"]
+std = [
+	"sp-core/std",
+	"sp-io/std",
+	"frame-support/std",
+	"fp-evm/std",
+	"codec/std",
+]

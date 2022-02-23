@@ -1,0 +1,113 @@
+[package]
+name = "frontier-template-runtime"
+version = "0.0.0"
+authors = ["Axlib DevHub <https://github.com/axlib-developer-hub>"]
+edition = "2018"
+license = "Unlicense"
+homepage = "https://axlib.io"
+repository = "https://github.com/axlib-developer-hub/frontier-node-template/"
+publish = false
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+codec = { git = "https://github.com/axia-tech/axia-scale-codec", branch = "v2.3.1", package = "axia-scale-codec", version = "2.3.1", default-features = false, features = ["derive"] }
+serde = { version = "1.0.101", optional = true, features = ["derive"] }
+scale-info = { git = "https://github.com/axia-tech/scale-info", branch = "v1.0.0", version = "1.0.0", default-features = false, features = ["derive"] }
+
+frame-executive = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+frame-support = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+frame-system = { default-features = false, package = "frame-system", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+frame-system-rpc-runtime-api = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+
+pallet-ethereum = { default-features = false, path = "../../frame/ethereum" }
+pallet-evm = { default-features = false, path = "../../frame/evm" }
+pallet-dynamic-fee = { default-features = false, path = "../../frame/dynamic-fee" }
+pallet-evm-precompile-simple = { default-features = false, path = "../../frame/evm/precompile/simple" }
+pallet-evm-precompile-sha3fips = { default-features = false, path = "../../frame/evm/precompile/sha3fips" }
+pallet-evm-precompile-modexp = { default-features = false, path = "../../frame/evm/precompile/modexp" }
+pallet-aura = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+pallet-balances = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+pallet-grandpa = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+pallet-randomness-collective-flip = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+pallet-sudo = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+pallet-timestamp = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+pallet-transaction-payment = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+pallet-transaction-payment-rpc-runtime-api = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+
+sp-api = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-block-builder = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev"}
+sp-consensus-aura = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-core = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-inherents = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev"}
+sp-io = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-offchain = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-runtime = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-session = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-std = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-transaction-pool = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-version = { default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+
+fp-rpc = { default-features = false, path = "../../primitives/rpc" }
+fp-self-contained = { default-features = false, path = "../../primitives/self-contained" }
+
+# benchmarking dependencies
+frame-benchmarking = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false, optional = true }
+frame-system-benchmarking = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false, optional = true }
+
+[build-dependencies]
+axlib-wasm-builder = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+
+[features]
+default = ["std", "aura"]
+aura = []
+manual-seal = []
+std = [
+	"codec/std",
+	"serde",
+
+	"frame-executive/std",
+	"frame-support/std",
+	"frame-system-rpc-runtime-api/std",
+	"frame-system/std",
+	"fp-rpc/std",
+	"fp-self-contained/std",
+
+	"pallet-ethereum/std",
+	"pallet-evm/std",
+	"pallet-dynamic-fee/std",
+	"pallet-evm-precompile-simple/std",
+	"pallet-evm-precompile-sha3fips/std",
+	"pallet-aura/std",
+	"pallet-balances/std",
+	"pallet-grandpa/std",
+	"pallet-randomness-collective-flip/std",
+	"pallet-sudo/std",
+	"pallet-timestamp/std",
+	"pallet-transaction-payment-rpc-runtime-api/std",
+	"pallet-transaction-payment/std",
+
+	"sp-api/std",
+	"sp-block-builder/std",
+	"sp-consensus-aura/std",
+	"sp-core/std",
+	"sp-inherents/std",
+	"sp-io/std",
+	"sp-offchain/std",
+	"sp-runtime/std",
+	"sp-session/std",
+	"sp-std/std",
+	"sp-transaction-pool/std",
+	"sp-version/std",
+	"frame-benchmarking/std",
+	"frame-system-benchmarking/std",
+	"scale-info/std",
+]
+runtime-benchmarks = [
+	"frame-benchmarking",
+	"frame-system-benchmarking",
+	"frame-system/runtime-benchmarks",
+	"pallet-ethereum/runtime-benchmarks",
+	"pallet-evm/runtime-benchmarks",
+]

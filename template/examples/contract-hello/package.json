@@ -1,0 +1,23 @@
+{
+  "name": "frontier-example-contract-hello",
+  "version": "0.1.0",
+  "description": "Hello contract example for Frontier project",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axia-tech/frontier.git"
+  },
+  "keywords": [
+    "ethereum",
+    "axlib"
+  ],
+  "author": "AXIA Technologies <admin@axiacoin.network>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/axia-tech/frontier/issues"
+  },
+  "homepage": "https://github.com/axia-tech/frontier",
+  "dependencies": {
+    "web3": "^1.2.8"
+  }
+}

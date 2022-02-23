@@ -1,0 +1,81 @@
+[package]
+name = "frontier-template-node"
+version = "0.0.0"
+authors = ["Axlib DevHub <https://github.com/axlib-developer-hub>"]
+description = "A fresh FRAME-based Axlib node, ready for hacking."
+edition = "2018"
+license = "Unlicense"
+build = "build.rs"
+homepage = "https://axlib.io"
+repository = "https://github.com/axlib-developer-hub/frontier-node-template/"
+publish = false
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+structopt = "0.3.8"
+async-trait = "0.1"
+jsonrpc-pubsub = { git = "https://github.com/axia-tech/jsonrpc", branch = "master", version = "18.0" }
+futures = "0.3"
+log = "0.4.8"
+
+sc-cli = { git = "https://github.com/axia-tech/axlib", branch = "dev", features = ["wasmtime"] }
+sp-core = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-executor = { git = "https://github.com/axia-tech/axlib", branch = "dev", features = ["wasmtime"] }
+sc-service = { git = "https://github.com/axia-tech/axlib", branch = "dev", features = ["wasmtime"] }
+sc-telemetry = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-keystore = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-transaction-pool = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-transaction-pool-api = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-consensus-aura = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-consensus-aura = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-consensus = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-consensus = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-consensus-manual-seal = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-network = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-finality-grandpa = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-finality-grandpa = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-client-api = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-timestamp = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-inherents = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+
+# These dependencies are used for the node template's RPCs
+jsonrpc-core = { git = "https://github.com/axia-tech/jsonrpc", branch = "master", version = "18.0" }
+sc-rpc = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-api = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-rpc-api = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-blockchain = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-block-builder = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-basic-authorship = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+axlib-frame-rpc-system = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+pallet-transaction-payment-rpc = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+
+# These dependencies are used for runtime benchmarking
+frame-benchmarking = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+frame-benchmarking-cli = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+
+fc-consensus = { path = "../../client/consensus" }
+fp-consensus = { path = "../../primitives/consensus" }
+frontier-template-runtime = { path = "../runtime", default-features = false, features = ["std"] }
+fc-rpc = { path = "../../client/rpc" }
+fp-rpc = { path = "../../primitives/rpc" }
+fc-rpc-core = { path = "../../client/rpc-core" }
+fc-db = { path = "../../client/db" }
+fc-mapping-sync = { path = "../../client/mapping-sync" }
+
+pallet-evm = { path = "../../frame/evm" }
+pallet-ethereum = { path = "../../frame/ethereum" }
+pallet-dynamic-fee = { path = "../../frame/dynamic-fee" }
+
+[build-dependencies]
+axlib-build-script-utils = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+
+[features]
+default = ["aura"]
+aura = ["frontier-template-runtime/aura"]
+manual-seal = ["frontier-template-runtime/manual-seal"]
+runtime-benchmarks = [
+	"frontier-template-runtime/runtime-benchmarks",
+]

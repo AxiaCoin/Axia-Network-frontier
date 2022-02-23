@@ -1,0 +1,51 @@
+[package]
+name = "fc-rpc"
+version = "2.0.0-dev"
+authors = ["AXIA Technologies <admin@axiacoin.network>"]
+edition = "2018"
+description = "Ethereum RPC (web3) compatibility layer for Axlib."
+license = "GPL-3.0-or-later WITH Classpath-exception-2.0"
+
+[dependencies]
+jsonrpc-core = { git = "https://github.com/axia-tech/jsonrpc", branch = "master", version = "18.0" }
+jsonrpc-derive = { git = "https://github.com/axia-tech/jsonrpc", branch = "master", version = "18.0" }
+jsonrpc-core-client = { git = "https://github.com/axia-tech/jsonrpc", branch = "master", version = "18.0" }
+jsonrpc-pubsub = { git = "https://github.com/axia-tech/jsonrpc", branch = "master", version = "18.0" }
+log = "0.4.8"
+ethereum-types = { git = "https://github.com/axia-tech/axia-common", branch = "master", version = "0.12.1" }
+evm = { git = "https://github.com/axia-tech/evm", branch = "master" }
+fc-consensus = { version = "2.0.0-dev", path = "../consensus" }
+fc-db = { version = "2.0.0-dev", path = "../db" }
+fc-rpc-core = { version = "1.1.0-dev", path = "../rpc-core" }
+fp-consensus = { version = "2.0.0-dev", path = "../../primitives/consensus" }
+fp-rpc = { version = "3.0.0-dev", path = "../../primitives/rpc" }
+fp-storage = { version = "2.0.0-dev", path = "../../primitives/storage"}
+sp-io = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-runtime = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-api = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-transaction-pool = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-transaction-pool = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-storage = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-blockchain = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-transaction-pool-api = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-service = { version = "0.10.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-client-api = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-rpc = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-network = { version = "0.10.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+pallet-evm = { version = "6.0.0-dev", path = "../../frame/evm" }
+fp-evm = { version = "3.0.0-dev", path = "../../primitives/evm" }
+pallet-ethereum = { version = "4.0.0-dev", path = "../../frame/ethereum" }
+ethereum = { git = "https://github.com/axia-tech/ethereum", branch = "master", features = ["with-codec"] }
+
+codec = { git = "https://github.com/axia-tech/axia-scale-codec", branch = "v2.3.1", package = "axia-scale-codec", version = "2.3.1" }
+rlp = { git = "https://github.com/axia-tech/axia-common", branch = "master", version = "0.5" }
+futures = { version = "0.3.1", features = ["compat"] }
+sha3 = "0.8"
+rustc-hex = { version = "2.1.0", default-features = false }
+libsecp256k1 = "0.3"
+rand = "0.7"
+lru = "0.6.6"
+parking_lot = "0.11.1"
+
+[features]
+rpc_binary_search_estimate = []

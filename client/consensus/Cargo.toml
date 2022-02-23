@@ -1,0 +1,29 @@
+[package]
+name = "fc-consensus"
+version = "2.0.0-dev"
+authors = ["AXIA Technologies <admin@axiacoin.network>"]
+description = "Frontier consensus for axlib"
+edition = "2018"
+license = "GPL-3.0-or-later WITH Classpath-exception-2.0"
+repository = "https://github.com/axia-tech/frontier/"
+
+[dependencies]
+codec = { git = "https://github.com/axia-tech/axia-scale-codec", branch = "v2.3.1", package = "axia-scale-codec", version = "2.3.1", features = ["derive"] }
+sp-core = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-blockchain = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-runtime = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-api = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-client-api = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-block-builder = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-inherents = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+fp-consensus = { version = "2.0.0-dev", path = "../../primitives/consensus" }
+fp-rpc = { version = "3.0.0-dev", path = "../../primitives/rpc" }
+fc-db = { version = "2.0.0-dev", path = "../db" }
+sp-consensus = { version = "0.10.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-consensus = { version = "0.10.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+log = "0.4.8"
+futures = { version = "0.3.1", features = ["compat"] }
+sp-timestamp = { version = "4.0.0-dev", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+derive_more = "0.99.2"
+prometheus-endpoint = { version = "0.9.0", package = "axlib-prometheus-endpoint", git = "https://github.com/axia-tech/axlib", branch = "dev" }
+async-trait = "0.1"

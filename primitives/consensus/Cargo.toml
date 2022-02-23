@@ -1,0 +1,30 @@
+[package]
+name = "fp-consensus"
+version = "2.0.0-dev"
+authors = ["AXIA Technologies <admin@axiacoin.network>"]
+description = "Primitives for Frontier consensus"
+edition = "2018"
+license = "Apache-2.0"
+homepage = "https://axlib.io"
+repository = "https://github.com/axia-tech/frontier/"
+
+[dependencies]
+sp-std = { version = "4.0.0-dev", default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-runtime = { version = "4.0.0-dev", default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-core = { version = "4.0.0-dev", default-features = false, git = "https://github.com/axia-tech/axlib", branch = "dev" }
+codec = { git = "https://github.com/axia-tech/axia-scale-codec", branch = "v2.3.1", package = "axia-scale-codec", version = "2.3.1", default-features = false, features = ["derive"] }
+ethereum = { git = "https://github.com/axia-tech/ethereum", branch = "master", default-features = false, features = ["with-codec"] }
+rlp = { git = "https://github.com/axia-tech/axia-common", branch = "master", version = "0.5", default-features = false }
+sha3 = { version = "0.8", default-features = false }
+
+[features]
+default = ["std"]
+std = [
+	"sp-std/std",
+	"sp-runtime/std",
+	"sp-core/std",
+	"codec/std",
+	"ethereum/std",
+	"rlp/std",
+	"sha3/std",
+]
